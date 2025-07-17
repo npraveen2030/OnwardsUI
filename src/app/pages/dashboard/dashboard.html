@@ -10,12 +10,11 @@
 </div>
 
 <!-- Dashboard Content with Blur Effect -->
-<div class="dashboard-content" [ngClass]="{ 'blur-background': showLoginPopup }">
+<div class="dashboard-content" [ngClass]="{ 'blur-background': showLoginPopup || showCard }">
   <div class="container mt-4">
     <h2>Hello, {{ username }}</h2>
     <p>This is your dashboard content.</p>
 
-    <!-- Add your actual dashboard content here -->
     <table class="table table-bordered mt-4">
       <tr>
         <th>Date</th>
@@ -38,5 +37,21 @@
         <td>{{ totalLoggedInHours }}</td>
       </tr>
     </table>
+
+    <!-- Logout Button -->
+    <button class="btn btn-danger mt-3" (click)="onLogout()">Logout</button>
+  </div>
+</div>
+
+<!-- Logout Shift Details Pop-up -->
+<div *ngIf="showCard" class="popup-overlay">
+  <div class="popup-card">
+    <h5>Shift Details</h5>
+    <p><strong>Date:</strong> {{ todayDate }}</p>
+    <p><strong>Shift Start Time:</strong> {{ shiftStartTime }}</p>
+    <p><strong>Login Time:</strong> {{ loginTime }}</p>
+    <p><strong>Logout Time:</strong> {{ logOutTime }}</p>
+    <p><strong>Total Logged In Hours:</strong> {{ totalLoggedInHours }}</p>
+    <button class="btn btn-primary mt-3" (click)="closeLogoutPopup()">Sign-n Again?</button>
   </div>
 </div>

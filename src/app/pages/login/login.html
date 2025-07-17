@@ -1,3 +1,11 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card p-4 shadow" style="width: 400px;">
+    <div class="text-center mb-4">
+      <h2 style="text-align: left;" class="fw-bold">Welcome</h2>
+      <h4 style="text-align: center;">To</h4>
+      <img src="src/assets/otlappslogo.jpg" alt="Logo" class="mb-2" style="height: 40px;">
+    </div>
+
 <div class="container mt-5">
   <h2>Login</h2>
   <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
@@ -9,6 +17,9 @@
       <label for="password" class="form-label">Password</label>
       <input type="password" formControlName="password" class="form-control" id="password" required>
     </div>
+   <div *ngIf="errorMessage" class="text-danger mb-2">{{ errorMessage }}</div>
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
 </div>
+</div>
+

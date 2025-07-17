@@ -36,7 +36,7 @@ export class Login {
         if (response.message === 'Login successful') {
           this.username = response.username;
           this.router.navigate(['/dashboard'], {
-            // queryParams: { username: response.username }
+            //queryParams: { username: response.username }
             queryParams: { username: this.loginForm.value.username }
           });
         } else {

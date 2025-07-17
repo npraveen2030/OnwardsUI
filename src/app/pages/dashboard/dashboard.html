@@ -1,10 +1,26 @@
 <app-navigation></app-navigation>
 
+<div class="top-bar d-flex justify-content-between align-items-center px-4 py-2 bg-light border-bottom">
+  <h4 class="mb-0">Dashboard</h4>
+<div class="dropdown">
+    <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" width="32" height="32" class="rounded-circle me-2" />
+      {{ username }}
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+<a class="dropdown-item text-danger" href="#" (click)="onLogout(); $event.preventDefault()">Logout</a>
+    </ul>
+  </div>
+</div>
+
 <!-- Login Success Pop-up -->
 <div *ngIf="showLoginPopup" class="popup-overlay">
   <div class="popup-card">
     <h4 class="mb-3">Welcome, {{ username }}!</h4>
     <p>You have logged in successfully.</p>
+    <p><strong>Date: </strong>{{ todayDate}}</p>
+    <p><strong>Shift Start Time: </strong>{{ shiftStartTime }}</p>
+    <p><strong>Login Time: </strong>{{ loginTime}}</p>
     <button class="btn btn-primary mt-3" (click)="onPopupOk()">OK</button>
   </div>
 </div>
@@ -39,7 +55,6 @@
     </table>
 
     <!-- Logout Button -->
-    <button class="btn btn-danger mt-3" (click)="onLogout()">Logout</button>
   </div>
 </div>
 

@@ -1,6 +1,6 @@
-<app-navigation></app-navigation>
+<app-navigation (logoutClicked)="onLogout()"></app-navigation>
 
-<div class="top-bar d-flex justify-content-between align-items-center px-4 py-2 bg-light border-bottom">
+<!-- <div class="top-bar d-flex justify-content-between align-items-center px-4 py-2 bg-light border-bottom">
   <h4 class="mb-0">Dashboard</h4>
 <div class="dropdown">
     <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -11,19 +11,74 @@
 <a class="dropdown-item text-danger" href="#" (click)="onLogout(); $event.preventDefault()">Logout</a>
     </ul>
   </div>
-</div>
+</div> -->
+<button class="btn btn-primary" (click)="SHowModelPop()">Popup</button>
 
 <!-- Login Success Pop-up -->
 <div *ngIf="showLoginPopup" class="popup-overlay">
-  <div class="popup-card">
-    <h4 class="mb-3">Welcome, {{ username }}!</h4>
-    <p>You have logged in successfully.</p>
-    <p><strong>Date: </strong>{{ todayDate}}</p>
-    <p><strong>Shift Start Time: </strong>{{ shiftStartTime }}</p>
-    <p><strong>Login Time: </strong>{{ loginTime}}</p>
-    <button class="btn btn-primary mt-3" (click)="onPopupOk()">OK</button>
+  <div class="popup-card position-relative">
+    <!-- Close Button (X) -->
+    <button type="button" class="btn-close position-absolute top-0 end-0 m-2" aria-label="Close" (click)="onPopupOk()"></button>
+    <h4 class="mb-3">Attendance Sign In</h4>
+    <p>Would you like to sign in Attendance?</p>
+    <table class="table table-bordered">
+  <tr>
+    <td>Date</td>
+    <td>{{ todayDate }}</td>
+  </tr>
+  <tr>
+    <td>Shift Start Time</td>
+    <td>{{ shiftStartTime }}</td>
+  </tr>
+  <tr>
+    <td>Login Time</td>
+    <td>{{ loginTime }}</td>
+  </tr>
+</table>
+
+<div class="d-flex justify-content-center gap-3 mt-3">
+  <button type="button" class="btn btn-primary btn-sm w-25" (click)="onPopupOk()">Ok</button>
+  <button type="button" class="btn btn-danger btn-sm w-25" (click)="onPopupOk()">Cancel</button>
+</div>
   </div>
 </div>
+
+<!-- Logout Success Pop-up -->
+<div *ngIf="showLogoutPopup" class="popup-overlay">
+    <div class="popup-card position-relative">
+    <!-- Close Button (X) -->
+    <button type="button" class="btn-close position-absolute top-0 end-0 m-2" aria-label="Close" (click)="closeLogoutPopup()"></button>
+    <h4 class="mb-3">Attendance Sign Out</h4>
+    <p>Would you like to sign out Attendance?</p>
+    <table class="table table-bordered">
+  <tr>
+    <td>Date</td>
+    <td>{{ todayDate }}</td>
+  </tr>
+  <tr>
+    <td>Shift Start Time</td>
+    <td>{{ shiftStartTime }}</td>
+  </tr>
+  <tr>
+    <td>Login Time</td>
+    <td>{{ loginTime }}</td>
+  </tr>
+  <tr>
+    <td>Logout Time</td>
+    <td>{{ logOutTime }}</td>
+  </tr>
+  <tr>
+    <td>Total Logged In Hours</td>
+    <td>{{ totalLoggedInHours }}</td>
+  </tr>
+</table>
+
+<div class="d-flex justify-content-center gap-3 mt-3">
+  <button type="button" class="btn btn-primary btn-sm w-25" (click)="closeLogoutPopup()">Ok</button>
+  <button type="button" class="btn btn-danger btn-sm w-25" (click)="closeLogoutPopup()">Cancel</button>
+</div>
+  </div>
+  </div>
 
 <!-- Dashboard Content with Blur Effect -->
 <div class="dashboard-content" [ngClass]="{ 'blur-background': showLoginPopup || showCard }">
@@ -60,13 +115,36 @@
 
 <!-- Logout Shift Details Pop-up -->
 <div *ngIf="showCard" class="popup-overlay">
-  <div class="popup-card">
-    <h5>Shift Details</h5>
-    <p><strong>Date:</strong> {{ todayDate }}</p>
-    <p><strong>Shift Start Time:</strong> {{ shiftStartTime }}</p>
-    <p><strong>Login Time:</strong> {{ loginTime }}</p>
-    <p><strong>Logout Time:</strong> {{ logOutTime }}</p>
-    <p><strong>Total Logged In Hours:</strong> {{ totalLoggedInHours }}</p>
-    <button class="btn btn-primary mt-3" (click)="closeLogoutPopup()">Sign-n Again?</button>
+  <div class="popup-card position-relative">
+    <!-- Close Button (X) -->
+    <button type="button" class="btn-close position-absolute top-0 end-0 m-2" aria-label="Close" (click)="closeLogoutPopup()"></button>
+    <h5 class="d-flex justify-content-center">Attendance Sign Out</h5>
+    <p class="d-flex justify-content-center">Would you like to sign out Attendance?</p>
+    <table class="table table-bordered">
+  <tr>
+    <td>Date</td>
+    <td>{{ todayDate }}</td>
+  </tr>
+  <tr>
+    <td>Shift Start Time</td>
+    <td>{{ shiftStartTime }}</td>
+  </tr>
+  <tr>
+    <td>Login Time</td>
+    <td>{{ loginTime }}</td>
+  </tr>
+  <tr>
+    <td>Logout Time</td>
+    <td>{{ logOutTime }}</td>
+  </tr>
+  <tr>
+    <td>Total Logged In Hours</td>
+    <td>{{ totalLoggedInHours }}</td>
+  </tr>
+</table>
+<div class="d-flex justify-content-center gap-3 mt-3">
+  <button class="btn btn-primary mt-3 btn-sm w-25" (click)="closeLogoutPopup()">Confirm</button>
+    <button class="btn btn-danger mt-3 btn-sm w-25" (click)="closeLogoutPopup()">Cancel</button>
+</div>
   </div>
 </div>

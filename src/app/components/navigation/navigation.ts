@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-navigation',
@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './navigation.css'
 })
 export class Navigation {
+  @Output() logoutClicked = new EventEmitter<void>();
+
+  onLogout() {
+    this.logoutClicked.emit();
+  }
 
 }

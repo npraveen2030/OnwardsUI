@@ -3,7 +3,7 @@ import { Navigation } from "../../components/navigation/navigation";
 
 @Component({
   selector: 'app-reports',
-  imports: [Navigation],
+  imports: [],
   templateUrl: './reports.html',
   styleUrl: './reports.css'
 })

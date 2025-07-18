@@ -1,25 +1,52 @@
-<div class="d-flex justify-content-center align-items-center min-vh-100">
-  <div class="card p-4 shadow" style="width: 400px;">
+<div class="d-flex justify-content-center align-items-center min-vh-100" style="background-color: #e6f0ff;">
+  <div class="card p-4 shadow rounded-4" style="width: 400px;">
     <div class="text-center mb-4">
-      <h2 style="text-align: left;" class="fw-bold">Welcome</h2>
-      <h4 style="text-align: center;">To</h4>
+      <h2 class="fw-bold text-center">WELCOME</h2>
+      <h5 class="text-center">TO</h5>
       <img src="assets/otlappslogo.jpg" alt="Logo" class="mb-2" style="height: 40px;">
     </div>
 
-<div class="container mt-5">
-  <h2>Login</h2>
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-    <div class="mb-3">
-      <label for="username" class="form-label">Username</label>
-      <input type="text" formControlName="username" class="form-control" id="username" required>
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" formControlName="password" class="form-control" id="password" required>
-    </div>
-   <div *ngIf="errorMessage" class="text-danger mb-2">{{ errorMessage }}</div>
-    <button type="submit" class="btn btn-primary">Login</button>
-  </form>
-</div>
-</div>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <!-- Username (Employee Code) -->
+      <div class="form-group mb-3 position-relative">
+        <div class="input-group">
+          <span class="input-group-text bg-light">
+            <i class="fa fa-user text-primary"></i>
+          </span>
+          <div class="form-floating flex-grow-1">
+            <input type="text" formControlName="username" class="form-control bg-light" id="username" placeholder="Employee Code" required>
+            <label for="username">Employee Code*</label>
+          </div>
+        </div>
+      </div>
 
+      <!-- Password -->
+      <div class="form-group mb-3 position-relative">
+        <div class="input-group">
+          <span class="input-group-text bg-light">
+            <i class="fa fa-lock text-primary"></i>
+          </span>
+          <div class="form-floating flex-grow-1">
+            <input type="password" formControlName="password" class="form-control bg-light" id="password" placeholder="Password" required>
+            <label for="password">Password*</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="text-danger mb-2 text-center">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Submit Button -->
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary px-5">Login</button>
+      </div>
+
+      <!-- Optional Forgot Password -->
+      <div class="text-end mt-2">
+        <a href="#" class="text-danger small fw-bold">Forgot / Reset Password?</a>
+      </div>
+    </form>
+  </div>
+</div>

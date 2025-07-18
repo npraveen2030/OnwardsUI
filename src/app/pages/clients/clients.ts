@@ -3,7 +3,7 @@ import { Navigation } from "../../components/navigation/navigation";
 
 @Component({
   selector: 'app-clients',
-  imports: [Navigation],
+  imports: [],
   templateUrl: './clients.html',
   styleUrl: './clients.css'
 })

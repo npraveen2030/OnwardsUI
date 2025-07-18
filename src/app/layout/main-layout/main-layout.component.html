@@ -6,9 +6,35 @@
           <a class="nav-link" routerLink="/dashboard">Dashboard</a>
           <a class="nav-link" routerLink="/register">Register</a>
         </div>
+
+        <!-- USER DROPDOWN ON RIGHT -->
+    <div class="dropdown ms-auto">
+      <button
+        class="btn btn-secondary dropdown-toggle d-flex align-items-center"
+        type="button"
+        id="userDropdown"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+          alt="User"
+          width="30"
+          height="30"
+          class="rounded-circle me-2"
+        />
+        EMP001
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+        <li>
+          <button class="dropdown-item text-danger" (click)="onLogout()">Logout</button>
+        </li>
+      </ul>
+    </div>
       </nav>
 
-      <div class="content">
-        <router-outlet></router-outlet>
-      </div>
-    </div> 
+       
+<div class="content">
+  <router-outlet></router-outlet>
+  </div>
+</div> 

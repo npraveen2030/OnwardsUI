@@ -8,7 +8,8 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
 import { Login } from './pages/login/login';
 import { Reports } from './pages/reports/reports';
 import { Dashboard } from './pages/dashboard/dashboard';
-import { Register } from './pages/register/register';
+import { Register } from './pages/register/register'; 
+import { Logout } from './pages/logout/logout';
 
 const routes: Routes = [
   { path: 'login', component: Login },
@@ -19,7 +20,8 @@ const routes: Routes = [
     children: [
       { path: 'report', component: Reports },
       { path: 'dashboard', component: Dashboard },
-      { path: 'register', component: Register }
+      { path: 'register', component: Register },
+      { path: 'logout', component: Logout}
     ]
   },
   { path: '**', redirectTo: 'login' } // catch-all

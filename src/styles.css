@@ -1,0 +1,27 @@
+/* Full layout fix for scrollbar and flex alignment */
+.left-section {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.dashboard-container {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-dashboard-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+
+.sidebar-scroll,
+.training-scroll {
+  overflow-y: auto;
+  height: 100%;
+}

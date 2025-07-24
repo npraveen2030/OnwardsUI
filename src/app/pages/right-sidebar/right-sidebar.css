@@ -1,0 +1,98 @@
+/* 🔷 Right Sidebar Container */
+html, body {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.right-sidebar {
+  background-color: #fff;
+  border-radius: 12px;
+  max-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔷 Profile Section */
+.right-sidebar .profile-section img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.right-sidebar .profile-section h6 {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.right-sidebar .profile-section small {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+/* 🔷 Quick Links Section */
+.right-sidebar .shortcut-section h6 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.3rem;
+}
+
+.right-sidebar .list-group-item {
+  padding: 1rem 1.25rem;
+  font-size: 0.85rem;
+  border: none;
+  border-bottom: 1px solid #f1f1f1;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  background-color: rgb(3, 116, 245);
+  margin-bottom: 10px;
+  color: white;
+}
+
+.right-sidebar .list-group-item:hover {
+  background-color: #71b8f2;
+  font-weight: 500;
+}
+
+/* 🔶 About Me menu styling on right sidebar */
+/* 🔷 About Me! bar styled like top navbar menu item */
+.about-me-menu {
+  background-color: lightgrey;
+  padding: 10px 0;
+  font-weight: 500;
+  font-size: 15px;
+  border-bottom: 2px solid #004080;
+  z-index: 1000;
+  cursor: pointer;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* 🔷 About Me! menu item inside the bar */
+.about-me-menu .menu-item {
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+/* 🔷 Hover effect same as dashboard menu */
+.about-me-menu .menu-item:hover {
+  background-color: rgba(142, 182, 241, 0.15);
+  transform: scale(1.05);
+}
+
+.about-me-menu .menu-text {
+  color: blue;
+}
+
+.orange-icon {
+  color: orange;
+  font-size: 20px;
+}

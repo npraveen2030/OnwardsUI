@@ -1,0 +1,12 @@
+.table-wrapper {
+  max-height: 400px; /* Adjust height for 10 rows approx */
+  overflow-y: auto;
+}
+
+/* Optional: keep header fixed */
+.table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #fff; /* or your preferred color */
+  z-index: 1;
+}

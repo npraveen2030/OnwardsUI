@@ -1,42 +1,63 @@
-<app-navigation></app-navigation>
- 
+
+
+<!-- 🔷 Main Layout (Left Content + Right Sidebar) -->
+<div class="d-flex main-wrapper align-items-start">
+  <!-- 🔹 LEFT SECTION: Hero + Dashboard -->
+  <div class="left-section">
+    <!-- 🔷 Top Navbar -->
+<nav class="top-nav d-flex justify-content-around align-items-center" [class.blurred]="showLogInAndLogOutPopup">
+  <div class="menu-item" style="color: blue;"><i class="bi bi-house-door-fill orange-icon me-2"></i>MD Address</div>
+  <div class="menu-item"><i class="bi bi-megaphone-fill orange-icon me-2"></i>Onward Tech Updates</div>
+  <div class="menu-item"><i class="bi bi-trophy-fill orange-icon me-2"></i>Reward & Recognition</div>
+  <div class="menu-item"><i class="bi bi-file-bar-graph-fill orange-icon me-2"></i>Marketing</div>
+  <div class="menu-item"><i class="bi bi-people-fill orange-icon me-2"></i>Life At Onward Tech</div>
+  <div class="menu-item"><i class="bi bi-hand-thumbs-up-fill orange-icon me-2"></i>Employee Engagement</div>
+</nav>
+    <!-- Hero Image -->
+    <img src="assets/onwards_header.jpg" alt="MD Image" class="hero-image" [class.blurred]="showLogInAndLogOutPopup">
+
+    <!-- 🔸 Blurred Background Dashboard Section -->
+    <div class="dashboard-container" [class.blurred]="showLogInAndLogOutPopup">
+      <app-navigation></app-navigation>
+
+      <div class="left-dashboard-content">
+        <!-- Left Sidebar -->
+        <div class="sidebar-scroll" style="width: 50%;">
+          <app-sidebar [locationId]="locationId"></app-sidebar>
+        </div>
+
+        <!-- Training List -->
+        <div class="training-scroll flex-grow-1 ps-3" style="padding-left: 15px;">
+          <app-training-list [locationId]="locationId"></app-training-list>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔹 RIGHT SIDEBAR -->
+  <div class="right-sidebar-fixed" [class.blurred]="showLogInAndLogOutPopup">
+    <app-right-sidebar></app-right-sidebar>
+  </div>
+</div>
+
+<!-- 🔷 LOGIN/LOGOUT POPUP -->
 <div *ngIf="showLogInAndLogOutPopup" class="popup-overlay">
   <div class="popup-card position-relative">
     <button type="button" class="btn-close position-absolute top-0 end-0 m-2" aria-label="Close" (click)="onPopupOk()"></button>
-    <h4 class="mb-3">Attendance {{showLogOutDetails ? 'Sign Out': 'Sign In' }}? </h4>
+    <h4 class="mb-3">Attendance {{showLogOutDetails ? 'Sign Out': 'Sign In' }}?</h4>
     <p>Would you like to {{showLogOutDetails ? 'sign out': 'sign in' }} Attendance?</p>
-     <table class="table table-bordered">
-        <tr>
-          <td>Date</td>
-          <td>{{ todayDate }}</td>
-        </tr>
-        <tr>
-          <td>Shift Start Time</td>
-          <td>{{ shiftStartTime }}</td>
-        </tr>
-        <tr>
-          <td>Login Time</td>
-          <td>{{ loginTime }}</td>
-        </tr>
-        
-        <tr *ngIf="showLogOutDetails">
-          <td>Logout Time</td>
-          <td>{{ logOutTime }}</td>
-        </tr>
-        <tr *ngIf="showLogOutDetails">
-          <td>Total Logged In Hours</td>
-          <td>{{ totalLoggedInHours }}</td>
-        </tr>
-      </table>
 
-      <div class="d-flex justify-content-center gap-3 mt-3" *ngIf="!showLogOutDetails">
-        <button type="button" class="btn btn-primary btn-sm w-25" (click)="onPopupOk()">Ok</button>
-        <button type="button" class="btn btn-danger btn-sm w-25" (click)="onPopupOk()">Cancel</button>
-      </div>
-      <div class="d-flex justify-content-center gap-3 mt-3" *ngIf="showLogOutDetails">
-        <button type="button" class="btn btn-primary btn-sm w-25" (click)="closeLogoutPopup()">Ok</button>
-        <button type="button" class="btn btn-danger btn-sm w-25" (click)="closeLogoutPopup()">Cancel</button>
-      </div>
+    <table class="table table-bordered">
+      <tr><td>Date</td><td>{{ todayDate }}</td></tr>
+      <tr><td>Shift Start Time</td><td>{{ shiftStartTime }}</td></tr>
+      <tr><td>Login Time</td><td>{{ loginTime }}</td></tr>
+      <tr *ngIf="showLogOutDetails"><td>Logout Time</td><td>{{ logOutTime }}</td></tr>
+      <tr *ngIf="showLogOutDetails"><td>Total Logged In Hours</td><td>{{ totalLoggedInHours }}</td></tr>
+    </table>
+
+    <div class="d-flex justify-content-center gap-3 mt-3">
+      <button type="button" class="btn btn-primary btn-sm w-25" (click)="onPopupOk()">Ok</button>
+      <button type="button" class="btn btn-danger btn-sm w-25" (click)="onPopupOk()">Cancel</button>
+    </div>
   </div>
-</div> 
- 
+</div>

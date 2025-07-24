@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router'; 
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { LogoutService } from '../../services/logout.service';
+import { Layout } from '../../services/layout.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -11,7 +12,8 @@ import { LogoutService } from '../../services/logout.service';
   styleUrl: './main-layout.component.scss'
 })
 export class MainLayoutComponent {
-  constructor(private router:Router, public logoutService:LogoutService){}
+  layoutTitle: string = '';
+  constructor(private router:Router, public layoutService:Layout, public logoutService:LogoutService){}
 
 onLogout() {
   const userId = 1;
@@ -27,5 +29,9 @@ onLogout() {
   //   this.logoutNotifier.notifyLogoutClicked();
   //   // Optionally perform other logout logic
   // }
-
+  ngOnInit() {
+    this.layoutService.layoutTitle$.subscribe(title => {
+      this.layoutTitle = title;
+    });
+  }
 }

@@ -1,1 +1,23 @@
-<p>sidebar works!</p>
+<div class="sidebar-table">
+  <h5><i class="bi bi-calendar-event-fill me-2" style="color: orange;"></i>My Holidays</h5>
+  <table class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th><strong>SI.No</strong></th>
+        <th>Date</th>
+        <th>Name</th>
+        <!-- <th>Day</th>
+        <th>Created Date</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let holiday of holidays; let i = index">
+        <td>{{ i+1 }}</td>
+        <td>{{ holiday.holidayDate | date }}</td>
+        <td>{{ holiday.holidayName }}</td>
+        <!-- <td>{{ holiday.day}}</td> -->
+        <!-- <td>{{ holiday.createdDate}}</td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>

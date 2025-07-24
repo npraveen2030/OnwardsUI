@@ -5,11 +5,14 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs'; 
 import { LogoutService } from '../../services/logout.service';
+import { SidebarComponent } from '../../layout/sidebar/sidebar.component';
+import { TrainingListComponent } from "../training-list/training-list";
+import { RightSidebar } from '../right-sidebar/right-sidebar';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [Navigation, CommonModule],
+  imports: [Navigation, CommonModule, SidebarComponent, TrainingListComponent, RightSidebar],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })
@@ -23,13 +26,15 @@ export class Dashboard implements OnInit {
   logOutTime: string = '';
   totalLoggedInHours: string = '';
   private subscription: Subscription| undefined;
+  locationId: number = 1;
+  showCard: any;
 
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
     private router: Router,
     private logoutNotifier: LogoutService,
-    private cdr: ChangeDetectorRef // 👈 ADD THIS
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -45,13 +50,16 @@ export class Dashboard implements OnInit {
 
   onPopupOk(): void {
     this.showLogInAndLogOutPopup = false;
+    if (this.showLogOutDetails) {
+    this.router.navigate(['/login']);
+  }
   }
   
   SHowModelPop(showLogOut:boolean =false): void {
 
      this.http.get(`https://localhost:7255/api/UserShiftDetails/GetByUserId/1`).subscribe({
       next: (response: any) => {
-        this.todayDate = response.date;
+        this.todayDate = response.todayDate;
         this.shiftStartTime = response.shiftStartTime;
         this.loginTime = response.loginTime;
         this.logOutTime = response.logOutTime;
@@ -76,4 +84,13 @@ export class Dashboard implements OnInit {
   closeLogoutPopup(): void {
     this.router.navigate(['/login']);
   }
+
+  // closeLogoutCancel(): void {
+  //   this.router.navigate(['/dashboard']);
+  // }
+
+  onLoginOkClick(): void {
+  this.showLogInAndLogOutPopup = false;
+  // locationId is already set
+}
 }

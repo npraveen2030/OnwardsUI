@@ -10,6 +10,7 @@ import { Reports } from './pages/reports/reports';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { Register } from './pages/register/register'; 
 import { Logout } from './pages/logout/logout';
+import { Myapprovals } from './pages/myapprovals/myapprovals';
 
 const routes: Routes = [
   { path: 'login', component: Login },
@@ -21,7 +22,8 @@ const routes: Routes = [
       { path: 'report', component: Reports },
       { path: 'dashboard', component: Dashboard },
       { path: 'register', component: Register },
-      { path: 'logout', component: Logout}
+      { path: 'logout', component: Logout},
+      { path: 'myapprovals', component: Myapprovals}
     ]
   },
   { path: '**', redirectTo: 'login' } // catch-all

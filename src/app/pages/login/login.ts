@@ -35,6 +35,9 @@ export class Login {
       next: (response: LoginResponse) => {
         if (response.message === 'Login successful') {
           this.username = response.username;
+
+          localStorage.setItem('loginTime', new Date().toISOString());
+
           this.router.navigate(['/dashboard'], {
             //queryParams: { username: response.username }
             queryParams: { username: this.loginForm.value.username }
